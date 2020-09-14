@@ -21,5 +21,5 @@ Web application for my Fantasy Football League:
 - @Reach/Router
 
 ### Special Thanks To
-https://dusty-turner.netlify.app/post/espn-fantasy-football-v3-api-an-r-solution/
-https://www.reddit.com/r/fantasyfootball/comments/aq284h/espn_api/
+- https://dusty-turner.netlify.app/post/espn-fantasy-football-v3-api-an-r-solution/
+- https://www.reddit.com/r/fantasyfootball/comments/aq284h/espn_api/
