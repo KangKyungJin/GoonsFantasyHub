@@ -2,7 +2,7 @@
 
 Web application for my Fantasy Football League:
 - Cacluates power rankings for each member every week
-- Pulls stats data from the ESPN Api
+- Pulls data from the ESPN Api via axios.get()
 - Takes data retrieved from ESPN and visualizes it via graphs.
 
 ## Planned Updates
