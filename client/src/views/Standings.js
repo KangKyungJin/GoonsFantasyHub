@@ -7,16 +7,33 @@ import Graph from '../components/Graph';
 const Standings = props => {
     const [teams, setTeams] = useState([]);
     const [loaded, setLoaded] = useState(false);
+    const [teamsData, setTeamsData] = useState([]);
     const year = props.year;
 
     useEffect(() => {
         axios.get(`https://fantasy.espn.com/apis/v3/games/ffl/seasons/${year}/segments/0/leagues/548652?view=mTeam`)
             .then(res => {
                 setTeams(res.data.teams);
-                console.log(res.data.teams);
+                dataList(res.data.teams);
                 setLoaded(true);
             })
     }, [year]);
+
+
+    const dataList = data => {
+        let dataList = [];
+        data.forEach(team => {
+            let curTeam = {
+                name: team.location + " " + team.nickname,
+                record: team.record.overall.wins + ' - ' + team.record.overall.losses,
+                pointsFor: team.record.overall.pointsFor,
+                pointsAgainst: team.record.overall.pointsAgainst,
+                RegStanding: team.playoffSeed       
+            }
+            dataList.push(curTeam);
+        });
+        setTeamsData(dataList);
+    }
 
     return (
         <div>
@@ -43,7 +60,7 @@ const Standings = props => {
                                             <td>{team.record.overall.wins} W | {team.record.overall.losses} L</td>
                                             <td>{team.record.overall.pointsFor}</td>
                                             <td>{team.record.overall.pointsAgainst}</td>
-                                            <td>{team.currentProjectedRank}</td>
+                                            <td>{team.playoffSeed}</td>
                                         </tr>
                                     })
                                 }
@@ -52,7 +69,7 @@ const Standings = props => {
                     </Col>
                 </Row>
                 {
-                    loaded && <Graph data={teams}/>
+                    loaded && <Graph td={teamsData}/>
                 }
             </div>
         </div>

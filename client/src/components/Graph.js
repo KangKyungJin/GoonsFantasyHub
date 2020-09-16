@@ -1,28 +1,30 @@
 import React from 'react';
 import { Row, Table, Col } from 'react-bootstrap';
-import { LineChart, XAxis, Tooltip, CartesianGrid, Line, YAxis } from 'recharts';
+import { LineChart, XAxis, Tooltip, CartesianGrid, Line, YAxis, ResponsiveContainer, Legend, Scatter, ScatterChart } from 'recharts';
+import logo from '../logo.svg';
 
 const Graph = props => {
     //example data for learning how to use Recharts
-    const data = [
-        {name: 'Page A', uv: 4000, pv: 2400},
-        {name: 'Page B', uv: 3000, pv: 1398},
-        {name: 'Page C', uv: 2000, pv: 9800}
-    ]
+    const data1 = [{ x: 1, y: 1}, {x: 2, y: 2}, { x: 3, y: 2},{ x: 4, y: 3},{ x: 5, y: 3},{ x: 6, y: 3},]
+    const data2 = [{ x: 1, y: 2}, {x: 2, y: 1}, { x: 3, y: 1},{ x: 4, y: 1},{ x: 5, y: 1},{ x: 6, y: 1},]
+    const data3 = [{ x: 1, y: 3}, {x: 2, y: 3}, { x: 3, y: 2},{ x: 4, y: 2},{ x: 5, y: 2},{ x: 6, y: 2},]
 
     return (
-        <Row>
-            <Col>
-                <LineChart width={400} height={400} data={data} margin={{ top: 5, right: 20, left: 10, bottom: 5}}>
-                    <XAxis dataKey="name" padding={{ left: 30, right: 30 }}/>
-                    <YAxis />
+        <div>
+            <ResponsiveContainer width="100%" height={400}>
+                <ScatterChart>
+                    <CartesianGrid />
+                    <XAxis type="number" dataKey="x" name="week" />
+                    <YAxis type="number" dataKey="y" name="ranking" />
                     <Tooltip />
-                    <CartesianGrid stroke="#f5f5f5" />
-                    <Line type="monotone" dataKey="uv" stroke="#ff7300" />
-                    <Line type="monotone" dataKey="pv" stroke="#387908" />
-                </LineChart>
-            </Col>
-        </Row>
+                    <Legend />
+                    <Scatter name="Team 1" data={data1} fill="#8884d8" line shape={logo} />
+                    <Scatter name="Team 2" data={data2} fill="#82ca9d" line shape="diamond" />
+                    <Scatter name="Team 3" data={data3} fill="#202020" line shape="triangle" />
+                </ScatterChart>
+            </ResponsiveContainer>
+        </div>
+
     )
 }
 
