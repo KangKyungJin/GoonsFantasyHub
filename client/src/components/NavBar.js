@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import {navigate} from '@reach/router';
 
 const NavBar = props => {
@@ -9,9 +9,10 @@ const NavBar = props => {
                 GoonSquad
             </Navbar.Brand>
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ml-auto">
-                    <Nav.Link onClick={() => navigate('/standings')}>Standings</Nav.Link>
-                </Nav>
+                <NavDropdown className="ml-auto" title="Year">
+                    <NavDropdown.Item onSelect={() => navigate(`/standings/2020`)} >2020</NavDropdown.Item>
+                    <NavDropdown.Item onSelect={() => navigate(`/standings/2019`)} >2019</NavDropdown.Item>
+                </NavDropdown>
             </Navbar.Collapse>
         </Navbar>
     )

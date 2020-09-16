@@ -2,9 +2,10 @@ const { Member } = require('../models/member.models');
 const { request, response } = require('express');
 
 module.exports.createMember = (request, response) => {
-    const { name, stats } = request.body;
+    const { name, year, stats } = request.body;
     Member.create({
         name,
+        year,
         stats
     })
         .then(member => response.json(member))

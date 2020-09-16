@@ -5,8 +5,11 @@ const MemberSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    year: {
+        type: Number,
+        required: true
+    },
     stats: { type: [{
-        year: Number,
         week: Number,
         posRank: Number,
         powRank: Number,
