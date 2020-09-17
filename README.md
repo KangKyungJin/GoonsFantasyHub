@@ -1,4 +1,4 @@
-# GoonsPlayFantasy
+# Goons Fantasy Hub
 
 Web application for my Fantasy Football League:
 - Cacluates power rankings for each member every week
