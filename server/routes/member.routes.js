@@ -5,4 +5,5 @@ module.exports = function(app) {
     app.get('/api/members', memberController.allMembers);
     app.get('/api/members/:id', memberController.oneMember);
     app.put('/api/members/:id', memberController.updateMember);
+    app.delete('/api/members/:id', memberController.deleteMember);
 }

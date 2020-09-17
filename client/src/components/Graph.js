@@ -5,17 +5,17 @@ import logo from '../logo.svg';
 
 const Graph = props => {
     //example data for learning how to use Recharts
-    const data1 = [{ x: 1, y: 1}, {x: 2, y: 2}, { x: 3, y: 2},{ x: 4, y: 3},{ x: 5, y: 3},{ x: 6, y: 3},]
-    const data2 = [{ x: 1, y: 2}, {x: 2, y: 1}, { x: 3, y: 1},{ x: 4, y: 1},{ x: 5, y: 1},{ x: 6, y: 1},]
-    const data3 = [{ x: 1, y: 3}, {x: 2, y: 3}, { x: 3, y: 2},{ x: 4, y: 2},{ x: 5, y: 2},{ x: 6, y: 2},]
+    const data1 = [{ week: 1, ranking: 1}, {week: 2, ranking: 2}, { week: 3, ranking: 2},{ week: 4, ranking: 3},{ week: 5, ranking: 3},{ week: 6, ranking: 3},]
+    const data2 = [{ week: 1, ranking: 2}, {week: 2, ranking: 1}, { week: 3, ranking: 1},{ week: 4, ranking: 1},{ week: 5, ranking: 1},{ week: 6, ranking: 1},]
+    const data3 = [{ week: 1, ranking: 3}, {week: 2, ranking: 3}, { week: 3, ranking: 2},{ week: 4, ranking: 2},{ week: 5, ranking: 2},{ week: 6, ranking: 2},]
 
     return (
         <div>
             <ResponsiveContainer width="100%" height={400}>
                 <ScatterChart>
                     <CartesianGrid />
-                    <XAxis type="number" dataKey="x" name="week" />
-                    <YAxis type="number" dataKey="y" name="ranking" />
+                    <XAxis type="number" dataKey="week" name="week" />
+                    <YAxis type="number" dataKey="ranking" name="ranking" />
                     <Tooltip />
                     <Legend />
                     <Scatter name="Team 1" data={data1} fill="#8884d8" line shape={logo} />

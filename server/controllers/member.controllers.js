@@ -30,3 +30,9 @@ module.exports.updateMember = (request,response) => {
         .catch(err => response.status(400).json(err));
 }
 
+module.exports.deleteMember = (request,response) => {
+    Member.findOneAndDelete({_id:request.params.id})
+        .then(deleteConfirm => response.json(deleteConfirm))
+        .catch(err => response.status(400).json(err));
+}
+

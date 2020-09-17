@@ -9,8 +9,13 @@ Web application for my Fantasy Football League:
 - Calculate and store power rankings to each member
 - Create graphs for power ranking, positional ranking, and maybe for points for / points against
 - *Need to finalize what backend data should look like* 
+- Incorporate OIL Power Ranking to calculate power rankings: ((avg score x 6) + ((high schore + low score) x 2) + ((winning% x 200) x 2)) / 10
 
 ## Changes
+
+9/17/2020:
+- Added form component, create and update member pages
+- Adjusted member models to further match my goals
 
 9/16/2020:
 - Played around with Recharts to learn its functions

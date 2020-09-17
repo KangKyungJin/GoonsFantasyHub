@@ -7,33 +7,16 @@ import Graph from '../components/Graph';
 const Standings = props => {
     const [teams, setTeams] = useState([]);
     const [loaded, setLoaded] = useState(false);
-    const [teamsData, setTeamsData] = useState([]);
     const year = props.year;
 
     useEffect(() => {
         axios.get(`https://fantasy.espn.com/apis/v3/games/ffl/seasons/${year}/segments/0/leagues/548652?view=mTeam`)
             .then(res => {
                 setTeams(res.data.teams);
-                dataList(res.data.teams);
                 setLoaded(true);
+                axios.get('http://localhost:8000/api/members')
             })
     }, [year]);
-
-
-    const dataList = data => {
-        let dataList = [];
-        data.forEach(team => {
-            let curTeam = {
-                name: team.location + " " + team.nickname,
-                record: team.record.overall.wins + ' - ' + team.record.overall.losses,
-                pointsFor: team.record.overall.pointsFor,
-                pointsAgainst: team.record.overall.pointsAgainst,
-                RegStanding: team.playoffSeed       
-            }
-            dataList.push(curTeam);
-        });
-        setTeamsData(dataList);
-    }
 
     return (
         <div>
@@ -69,7 +52,7 @@ const Standings = props => {
                     </Col>
                 </Row>
                 {
-                    loaded && <Graph td={teamsData}/>
+                    loaded && <Graph td=""/>
                 }
             </div>
         </div>
